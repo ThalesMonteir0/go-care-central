@@ -8,10 +8,10 @@ import (
 
 type UserDTORequest struct {
 	ID       int    `json:"id"`
+	ClinicID int    `json:"clinic_id"`
 	Name     string `json:"name"`
 	Email    string `json:"email"`
 	Password string `json:"password"`
-	ClinicID int    `json:"clinic_id"`
 }
 
 func FromJsonUserDTORequest(body io.Reader) (*UserDTORequest, *rest_err.RestErr) {
