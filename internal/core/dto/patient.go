@@ -12,8 +12,8 @@ type PatientDTORequest struct {
 	ID                      uuid.UUID `json:"id"`
 	Name                    string    `json:"name"`
 	CPFPersonResponsible    string    `json:"cpf_person_responsible"`
-	DateOfBirth             time.Time `json:"date_of_birth"`
 	CellOfPersonResponsible string    `json:"cell_of_person_responsible"`
+	DateOfBirth             time.Time `json:"date_of_birth"`
 	ClinicID                int       `json:"clinic_id"`
 }
 
