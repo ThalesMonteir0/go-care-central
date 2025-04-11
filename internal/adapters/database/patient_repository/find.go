@@ -1,0 +1,16 @@
+package patient_repository
+
+import (
+	"go-care-central/internal/core/domain"
+	"go-care-central/pkg/rest_err"
+)
+
+func (p PatientRepository) Get() ([]domain.Patient, *rest_err.RestErr) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (p PatientRepository) GetByID(ID string) (*domain.Patient, *rest_err.RestErr) {
+	//TODO implement me
+	panic("implement me")
+}
