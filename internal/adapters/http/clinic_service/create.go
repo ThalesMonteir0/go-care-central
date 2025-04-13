@@ -10,11 +10,13 @@ func (c ClinicService) Create(response http.ResponseWriter, request *http.Reques
 	clinicDTO, err := dto.FromJsonClinicRequest(body)
 	if err != nil {
 		response.WriteHeader(err.Code)
+		return
 	}
 
 	err = c.useCase.Create(clinicDTO)
 	if err != nil {
 		response.WriteHeader(err.Code)
+		return
 	}
 
 	response.WriteHeader(http.StatusCreated)
