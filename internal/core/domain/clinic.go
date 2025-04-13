@@ -19,9 +19,9 @@ type ClinicService interface {
 }
 
 type ClinicUseCase interface {
-	Create(clinic *dto.ClinicDTORequest) (*dto.ClinicDTORequest, *rest_err.RestErr)
+	Create(clinic *dto.ClinicDTORequest) *rest_err.RestErr
 }
 
 type ClinicRepository interface {
-	Create(clinic *dto.ClinicDTORequest) (*Clinic, *rest_err.RestErr)
+	Create(clinic *dto.ClinicDTORequest) *rest_err.RestErr
 }
