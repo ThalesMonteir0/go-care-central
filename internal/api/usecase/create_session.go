@@ -3,7 +3,7 @@ package usecase
 import (
 	"github.com/ThalesMonteir0/go-care-central/internal/api/DTO"
 	"github.com/ThalesMonteir0/go-care-central/internal/api/domain"
-	"github.com/ThalesMonteir0/go-care-central/internal/api/repository/postgres"
+	"github.com/ThalesMonteir0/go-care-central/internal/infra/repository/postgres"
 )
 
 type createSessionsUseCase struct {
