@@ -19,6 +19,11 @@ type UserDTOResponse struct {
 	Active   bool      `json:"active"`
 }
 
+type UserLoginRequest struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
 type UserLoginDTOResponse struct {
 	ID       uuid.UUID `json:"id"`
 	ClinicID uuid.UUID `json:"clinic_id"`

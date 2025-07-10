@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"github.com/ThalesMonteir0/go-care-central/internal/api/DTO"
+	"github.com/ThalesMonteir0/go-care-central/internal/api/domain"
 	"github.com/ThalesMonteir0/go-care-central/internal/infra/repository/postgres"
 )
 
@@ -10,7 +10,7 @@ type findUserByEmailUseCase struct {
 }
 
 type IFindUserByEmailUseCase interface {
-	Execute(userEmail string) (DTO.UserLoginDTOResponse, error)
+	Execute(userEmail string) (domain.User, error)
 }
 
 func NewFindUserByEmailUseCase(repository postgres.IUserRepository) IFindUserByEmailUseCase {
@@ -19,19 +19,11 @@ func NewFindUserByEmailUseCase(repository postgres.IUserRepository) IFindUserByE
 	}
 }
 
-func (f findUserByEmailUseCase) Execute(userEmail string) (DTO.UserLoginDTOResponse, error) {
+func (f findUserByEmailUseCase) Execute(userEmail string) (domain.User, error) {
 	user, err := f.repository.FindUserByEmail(userEmail)
 	if err != nil {
-		return DTO.UserLoginDTOResponse{}, err
+		return domain.User{}, err
 	}
 
-	userDto := DTO.UserLoginDTOResponse{
-		ID:       user.ID,
-		ClinicID: user.ClinicID,
-		Name:     user.Name,
-		Email:    user.Email,
-		Active:   user.Active,
-	}
-
-	return userDto, nil
+	return user, nil
 }
