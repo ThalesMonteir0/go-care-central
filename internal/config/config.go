@@ -6,12 +6,12 @@ import (
 )
 
 type Env struct {
-	AppEnv           string `json:"APP_ENV"`
-	PostgresHost     int    `json:"POSTGRES_HOST"`
-	PostgresUser     string `json:"POSTGRES_USER"`
-	PostgresPassword string `json:"POSTGRES_PASSWORD"`
-	PostgresDB       string `json:"POSTGRES_DB"`
-	PostgresPort     string `json:"POSTGRES_PORT"`
+	AppEnv           string `mapstructure:"APP_ENV"`
+	PostgresHost     string `mapstructure:"POSTGRES_HOST"`
+	PostgresUser     string `mapstructure:"POSTGRES_USER"`
+	PostgresPassword string `mapstructure:"POSTGRES_PASSWORD"`
+	PostgresDB       string `mapstructure:"POSTGRES_DB"`
+	PostgresPort     int    `mapstructure:"POSTGRES_PORT"`
 }
 
 func LoadVariables() *Env {

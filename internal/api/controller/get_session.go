@@ -7,11 +7,28 @@ import (
 	"net/http"
 )
 
-func (n newSessionController) GetSessions(c *gin.Context) {
-	//	TODO: PEGAR O CLINIC_ID DO TOKEN
-	clinicID := uuid.UUID{}
+func (n sessionController) GetSessions(c *gin.Context) {
+	clinicID, ok := c.Get("clinic_id")
+	if !ok {
+		c.JSON(http.StatusBadRequest, DTO.ResponseHTTP{
+			Data:    nil,
+			Success: false,
+			Err:     "nao foi possivel buscar o clinic_id deste usuario",
+		})
+		return
+	}
 
-	sessions, err := n.findSessionsUseCase.Execute(clinicID)
+	clinicUUID, err := uuid.Parse(clinicID.(string))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, DTO.ResponseHTTP{
+			Data:    nil,
+			Success: false,
+			Err:     "nao foi possivel converter o clinic_id",
+		})
+		return
+	}
+
+	sessions, err := n.findSessionsUseCase.Execute(clinicUUID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, DTO.ResponseHTTP{
 			Data:    nil,

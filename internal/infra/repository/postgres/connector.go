@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/ThalesMonteir0/go-care-central/internal/config"
+	_ "github.com/lib/pq"
 	"log"
 )
 
